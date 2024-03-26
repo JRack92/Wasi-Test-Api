@@ -8,8 +8,6 @@ console.log(url);
 
 // console.log(result);
 
-
-
 console.log(123);
 async function logMovies() {
   const response = await fetch(
