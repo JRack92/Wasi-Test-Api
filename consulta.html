@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fetch API Example</title>
+</head>
+<body>
+
+<button id="fetchData">Fetch Data</button>
+
+<script>
+document.getElementById('fetchData').addEventListener('click', function() {
+    // URL de la API
+   // Token de acceso
+   var token = '4S5J_vW2T_ZJ1u_PvKR';
+
+    // se envia al script php consulta api wasi
+    var apiUrlBase = 'https://api.wasi.co/v1/property/search?id_company=12187774&wasi_token=' + token;
+
+// Realizar la solicitud fetch al script PHP con la URL base
+
+
+    // Realizar la solicitud fetch al script PHP
+    fetch('consulta.php?url=' + encodeURIComponent(apiUrlBase))
+    .then(function(response) {
+        // Verificar si la respuesta es exitosa
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Decodificar la respuesta JSON
+        return response.json();
+    })
+    .then(function(data) {
+        // Imprimir la respuesta en la consola
+        console.log( `Repuesta = ${data}`);
+        // Aquí puedes manipular la respuesta como desees
+    })
+    .catch(function(error) {
+        // Capturar y manejar errores
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+});
+</script>
+
+</body>
+</html>
